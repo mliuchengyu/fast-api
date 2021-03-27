@@ -1,0 +1,1103 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "newbee api doc",
+        "description": "or this sample, you can use the api key `special-key` to test the authorization filters.",
+        "contact": {
+            "email": "mliuchengyu@live.cn"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://127.0.0.1:8000",
+            "description": "本地接口"
+        },
+        {
+            "url": "https://fast-api.dnat.link",
+            "description": "测试接口"
+        }
+    ],
+    "paths": {
+        "/api/menus": {
+            "get": {
+                "tags": [
+                    "菜单管理"
+                ],
+                "description": "菜单列表",
+                "operationId": "Fast\\Api\\Permission\\Http\\Api\\Controllers\\AdminMenuController::index",
+                "parameters": [
+                    {
+                        "name": "title",
+                        "in": "query",
+                        "description": "菜单名称",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "parent_id",
+                        "in": "query",
+                        "description": "父级菜单id",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AdminMenu"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "菜单管理"
+                ],
+                "description": "添加菜单",
+                "operationId": "Fast\\Api\\Permission\\Http\\Api\\Controllers\\AdminMenuController::store",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "title": {
+                                        "description": "菜单名称",
+                                        "type": "string"
+                                    },
+                                    "path": {
+                                        "description": "菜单路径",
+                                        "type": "string"
+                                    },
+                                    "parent_id": {
+                                        "description": "父级菜单",
+                                        "type": "integer"
+                                    },
+                                    "roles": {
+                                        "description": "权限ID",
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "title": "菜单管理",
+                                    "path": "/order",
+                                    "parent_id": 0,
+                                    "roles": []
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/menus/{id}": {
+            "get": {
+                "tags": [
+                    "菜单管理"
+                ],
+                "description": "描述",
+                "operationId": "getProjectById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "菜单ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "菜单管理"
+                ],
+                "description": "描述",
+                "operationId": "Fast\\Api\\Permission\\Http\\Api\\Controllers\\AdminMenuController::destroy",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "菜单ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/permissions/{id}": {
+            "put": {
+                "tags": [
+                    "菜单管理"
+                ],
+                "description": "描述",
+                "operationId": "Fast\\Api\\Permission\\Http\\Api\\Controllers\\AdminMenuController::update",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "菜单ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "权限管理"
+                ],
+                "description": "描述",
+                "operationId": "Fast\\Api\\Permission\\Http\\Api\\Controllers\\AdminPermissionController::destroy",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "权限ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/menus/node": {
+            "get": {
+                "tags": [
+                    "菜单管理"
+                ],
+                "description": "描述",
+                "operationId": "Fast\\Api\\Permission\\Http\\Api\\Controllers\\AdminMenuController::nodes",
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "children": {
+                                            "description": "子元素集合",
+                                            "type": "object"
+                                        },
+                                        "label": {
+                                            "description": "菜单名称",
+                                            "type": "string"
+                                        },
+                                        "value": {
+                                            "description": "菜单ID",
+                                            "type": "integer"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/permission": {
+            "get": {
+                "tags": [
+                    "权限管理"
+                ],
+                "description": "描述",
+                "operationId": "Fast\\Api\\Permission\\Http\\Api\\Controllers\\AdminPermissionController::index",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "权限名称",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "parent_id",
+                        "in": "query",
+                        "description": "父级权限id",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AdminPermission"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "权限管理"
+                ],
+                "description": "描述",
+                "operationId": "Fast\\Api\\Permission\\Http\\Api\\Controllers\\AdminPermissionController::store",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "description": "权限名称",
+                                        "type": "string"
+                                    },
+                                    "slug": {
+                                        "description": "权限标示",
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "description": "权限描述",
+                                        "type": "string"
+                                    },
+                                    "parent_id": {
+                                        "description": "父级权限",
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "name": "用户管理",
+                                    "slug": "/user",
+                                    "description": "描述",
+                                    "parent_id": 0
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/permission/{id}": {
+            "get": {
+                "tags": [
+                    "权限管理"
+                ],
+                "description": "描述",
+                "operationId": "Fast\\Api\\Permission\\Http\\Api\\Controllers\\AdminPermissionController::show",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "权限ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "权限管理"
+                ],
+                "description": "描述",
+                "operationId": "Fast\\Api\\Permission\\Http\\Api\\Controllers\\AdminPermissionController::update",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "权限ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "权限名称",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "slug",
+                        "in": "query",
+                        "description": "权限标示",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "parent_id",
+                        "in": "query",
+                        "description": "父级权限",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/permissions/node": {
+            "get": {
+                "tags": [
+                    "权限管理"
+                ],
+                "description": "描述",
+                "operationId": "Fast\\Api\\Permission\\Http\\Api\\Controllers\\AdminPermissionController::nodes",
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "children": {
+                                            "description": "子元素集合",
+                                            "type": "object"
+                                        },
+                                        "label": {
+                                            "description": "权限名称",
+                                            "type": "string"
+                                        },
+                                        "value": {
+                                            "description": "权限ID",
+                                            "type": "integer"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/role": {
+            "get": {
+                "tags": [
+                    "角色管理"
+                ],
+                "description": "列表",
+                "operationId": "Fast\\Api\\Permission\\Http\\Api\\Controllers\\AdminRoleController::index",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "角色名称",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AdminRole"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "角色管理"
+                ],
+                "description": "添加",
+                "operationId": "Fast\\Api\\Permission\\Http\\Api\\Controllers\\AdminRoleController::store",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "description": "角色名称",
+                                        "type": "string"
+                                    },
+                                    "slug": {
+                                        "description": "角色标示",
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "description": "角色描述",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "name": "业务部门",
+                                    "slug": "/business",
+                                    "description": "system init"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/role/apply/{id}": {
+            "post": {
+                "tags": [
+                    "角色管理"
+                ],
+                "description": "授权",
+                "operationId": "Fast\\Api\\Permission\\Http\\Api\\Controllers\\AdminRoleController::apply",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "角色ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "permissions": {
+                                        "description": "权限ids",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "permissions": [
+                                        1,
+                                        2,
+                                        3
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/role/{id}": {
+            "get": {
+                "tags": [
+                    "角色管理"
+                ],
+                "description": "详情",
+                "operationId": "Fast\\Api\\Permission\\Http\\Api\\Controllers\\AdminRoleController::show",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "角色ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AdminRole"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "角色管理"
+                ],
+                "description": "更新",
+                "operationId": "Fast\\Api\\Permission\\Http\\Api\\Controllers\\AdminRoleController::update",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "角色ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "角色名称",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "slug",
+                        "in": "query",
+                        "description": "角色标示",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AdminRole"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "角色管理"
+                ],
+                "description": "删除",
+                "operationId": "Fast\\Api\\Permission\\Http\\Api\\Controllers\\AdminRoleController::destroy",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "角色ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/roles_users": {
+            "get": {
+                "tags": [
+                    "角色管理"
+                ],
+                "description": "角色用户列表",
+                "operationId": "Fast\\Api\\Permission\\Http\\Api\\Controllers\\AdminRoleController::nodes",
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "id": 3,
+                                    "name": "业务员"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/users": {
+            "get": {
+                "tags": [
+                    "用户管理"
+                ],
+                "description": "列表",
+                "operationId": "Fast\\Api\\Permission\\Http\\Api\\Controllers\\AdminUserController::index",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "用户名称",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "username",
+                        "in": "query",
+                        "description": "登录账号",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AdminUser"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "用户管理"
+                ],
+                "description": "添加",
+                "operationId": "Fast\\Api\\Permission\\Http\\Api\\Controllers\\AdminUserController::store",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "username": {
+                                        "description": "登录账号",
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "description": "密码",
+                                        "type": "string"
+                                    },
+                                    "name": {
+                                        "description": "姓名",
+                                        "type": "string"
+                                    },
+                                    "mobile": {
+                                        "description": "手机号码",
+                                        "type": "string"
+                                    },
+                                    "remark": {
+                                        "description": "描述",
+                                        "type": "string"
+                                    },
+                                    "avatar": {
+                                        "description": "头像",
+                                        "type": "string"
+                                    },
+                                    "company_code": {
+                                        "description": "XF",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "username": "test001",
+                                    "password": "123123",
+                                    "name": "测试账号",
+                                    "mobile": "181****0406",
+                                    "remark": "system init",
+                                    "avatar": "https://www.baidu.com/1.jpg",
+                                    "company_code": "XF"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/users/{id}": {
+            "get": {
+                "tags": [
+                    "用户管理"
+                ],
+                "description": "详情",
+                "operationId": "Fast\\Api\\Permission\\Http\\Api\\Controllers\\AdminUserController::show",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "用户ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AdminUser"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "用户管理"
+                ],
+                "description": "更新",
+                "operationId": "Fast\\Api\\Permission\\Http\\Api\\Controllers\\AdminUserController::update",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "用户ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "username",
+                        "in": "query",
+                        "description": "用户账号",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "description": "用户密码",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "姓名",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "mobile",
+                        "in": "query",
+                        "description": "手机号码",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "rolesIds",
+                        "in": "query",
+                        "description": "拥有角色",
+                        "required": true,
+                        "schema": {
+                            "type": "object"
+                        }
+                    },
+                    {
+                        "name": "remark",
+                        "in": "query",
+                        "description": "备注",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "avatar",
+                        "in": "query",
+                        "description": "头像",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "company_code",
+                        "in": "query",
+                        "description": "公司代码",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "staff_code",
+                        "in": "query",
+                        "description": "员工代码",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AdminUser"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "用户管理"
+                ],
+                "description": "删除",
+                "operationId": "Fast\\Api\\Permission\\Http\\Api\\Controllers\\AdminUserController::destroy",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "用户ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "AdminMenu": {
+                "title": "AdminMenu model",
+                "description": "AdminMenu model",
+                "properties": {
+                    "id": {
+                        "title": "ID",
+                        "description": "ID",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "parent_id": {
+                        "title": "parent_id",
+                        "description": "父级菜单id",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "title": {
+                        "title": "title",
+                        "description": "菜单名称",
+                        "type": "string"
+                    },
+                    "path": {
+                        "title": "path",
+                        "description": "菜单路径",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "AdminPermission": {
+                "title": "AdminPermission model",
+                "description": "AdminPermission model",
+                "properties": {
+                    "id": {
+                        "title": "ID",
+                        "description": "ID",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "parent_id": {
+                        "title": "parent_id",
+                        "description": "父级权限id",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "name": {
+                        "title": "name",
+                        "description": "权限名称",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "AdminRole": {
+                "title": "AdminRole model",
+                "description": "AdminRole model",
+                "properties": {
+                    "id": {
+                        "title": "ID",
+                        "description": "ID",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "name": {
+                        "title": "title",
+                        "description": "角色名称",
+                        "type": "string"
+                    },
+                    "slug": {
+                        "title": "title",
+                        "description": "角色标示",
+                        "type": "string"
+                    },
+                    "description": {
+                        "title": "title",
+                        "description": "描述",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "AdminUser": {
+                "title": "AdminUser model",
+                "description": "AdminUser model",
+                "properties": {
+                    "id": {
+                        "title": "ID",
+                        "description": "ID",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "username": {
+                        "title": "title",
+                        "description": "账号",
+                        "type": "string"
+                    },
+                    "password": {
+                        "title": "title",
+                        "description": "密码",
+                        "type": "string"
+                    },
+                    "name": {
+                        "title": "title",
+                        "description": "姓名",
+                        "type": "string"
+                    },
+                    "mobile": {
+                        "title": "title",
+                        "description": "手机号码",
+                        "type": "string"
+                    },
+                    "remark": {
+                        "title": "title",
+                        "description": "备注",
+                        "type": "string"
+                    },
+                    "avatar": {
+                        "title": "title",
+                        "description": "头像",
+                        "type": "string"
+                    },
+                    "company_code": {
+                        "title": "title",
+                        "description": "公司代码",
+                        "type": "string"
+                    },
+                    "staff_code": {
+                        "title": "title",
+                        "description": "员工代码",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "securitySchemes": {
+            "授权登陆": {
+                "type": "oauth2",
+                "description": "Use a global client_id / client_secret and your username / password combo to obtain a token",
+                "in": "header",
+                "flows": {
+                    "password": {
+                        "tokenUrl": "/api/apidoc",
+                        "scopes": {}
+                    }
+                },
+                "scheme": "http"
+            }
+        }
+    },
+    "security": [
+        []
+    ]
+}
