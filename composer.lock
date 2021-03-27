@@ -763,12 +763,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/fast-php/fast-api-permission.git",
-                "reference": "60874235739f1a72ca297dd389dc9e68bf4b18c2"
+                "reference": "a8351f83f521aeabe24ecb0f3d9225fc8927a2a6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fast-php/fast-api-permission/zipball/60874235739f1a72ca297dd389dc9e68bf4b18c2",
-                "reference": "60874235739f1a72ca297dd389dc9e68bf4b18c2",
+                "url": "https://api.github.com/repos/fast-php/fast-api-permission/zipball/a8351f83f521aeabe24ecb0f3d9225fc8927a2a6",
+                "reference": "a8351f83f521aeabe24ecb0f3d9225fc8927a2a6",
                 "shasum": ""
             },
             "require": {
@@ -827,7 +827,7 @@
                 "issues": "https://github.com/fast-php/fast-api-permission/issues",
                 "source": "https://github.com/fast-php/fast-api-permission/tree/master"
             },
-            "time": "2021-03-27T04:02:49+00:00"
+            "time": "2021-03-27T11:58:15+00:00"
         },
         {
             "name": "fideloper/proxy",
