@@ -114,7 +114,7 @@ API仓库地址：
 >
 ## 版权和许可
 
-[fast-api/permission](https://github.com/fast-oopdev/fast-api)
+[fast-api](https://github.com/fast-oopdev/fast-api)
 was written by [fast-oopdev](http://www.dnat.link) and is released under the
 [MIT License](LICENSE.md).
 
