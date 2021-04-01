@@ -3,7 +3,7 @@ fast-api 基于Laravel简洁、优雅的PHP Web开发框架(PHP Web Framework)�
 
 更多功能可以参考下面的文档。
 
-- [安装与配置](#安装与配置)
+- [简介](#安装与配置)
     - [安装](#安装)
         - [配置数据库](#配置数据库)
         - [数据迁移](#数据迁移)
@@ -17,9 +17,8 @@ fast-api 基于Laravel简洁、优雅的PHP Web开发框架(PHP Web Framework)�
 - [版权和许可](#版权和许可)
 
 
-## 安装与配置
-
-<h1 align="center">Fast-oopdev Cloud Fast-api SDK for Laravel</h1>
+## 简介
+![image](https://logo.aliyun.com/logo/image?goodsId=789c09932931073747addca94bbe3c93&type=png)
 
 ## 安装
 
@@ -104,8 +103,13 @@ API仓库地址：
 
 
 ## 存储库
-fast-api-permission 为开源项目，允许把它用于任何地方，不受任何约束，欢迎 fork 项目。
+> fast-api
 >* GitHub 托管地址：https://github.com/fast-oopdev/fast-api-permission
+> 
+> fast-admin
+>* GitHub 托管地址：https://github.com/fast-oopdev/fast-admin-permission
+> 
+> fast-api/permission
 >* packagist 托管地址：https://packagist.org/packages/fast-api/permission
 >
 ## 版权和许可
