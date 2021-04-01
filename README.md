@@ -57,18 +57,6 @@ php artisan db:seed --class=AdminUserSeeder
 php artisan serve
 ```
 
-## bug 建议 贡献和支持
-
-请使用[Github](https://github.com/fast-php/fast-api-permission)报告bug，并提出意见或建议。
-
-请参阅[CONTRIBUTING.md](CONTRIBUTING.md)了解如何贡献更改。
-
-
-
-API文档:
-
-http://127.0.0.1:8000/api/documentation
-
 ## 文档
 PHP开发技术交流（QQ群 368868750）
 
@@ -112,6 +100,14 @@ API仓库地址：
 > fast-api/permission
 >* packagist 托管地址：https://packagist.org/packages/fast-api/permission
 >
+
+## bug 建议 贡献和支持
+
+请使用[Github](https://github.com/fast-php/fast-api-permission)报告bug，并提出意见或建议。
+
+请参阅[CONTRIBUTING.md](CONTRIBUTING.md)了解如何贡献更改。
+
+
 ## 版权和许可
 
 [fast-api](https://github.com/fast-oopdev/fast-api)
